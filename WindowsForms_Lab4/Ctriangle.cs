@@ -29,7 +29,7 @@ namespace WindowsForms_Lab4
         // Метод на проверку существования треугольника
         public bool isCtriangle()
         {
-            if ((this.Side1 + this.Side2) > this.Side3)
+            if ((this.Side1 + this.Side2) > this.Side3 && (this.Side1 + this.Side3) > this.Side2 && (this.Side3 + this.Side2) > this.Side1)
                 return true;
             else
                 return false;
@@ -70,6 +70,9 @@ namespace WindowsForms_Lab4
 
         public Ctriangle(int N)  // Создаем конструктор с 1 параметром(в данном случае это размер массива)
         {
+            if (N > 10)
+                N = 10;
+
             eqct = new Ctriangle[N]; // Выделяем память под массив
 
             Random r = new Random(); // Создаем объект класса Random
@@ -93,7 +96,7 @@ namespace WindowsForms_Lab4
             double middle = 0; // Создаем переменную и присваиваем ей 0
 
             if (arr.Length > 0) // Проверка на данные в массиве
-                for (int i = 0; i < arr.Length; i++) // Цикл для перебора элементов массива
+                for (int i = 0; i < (arr.Length < 10 ? arr.Length : 10); i++) // Цикл для перебора элементов массива
                     middle += arr[i].GetSquare(); // Складываем площади каждого треугольника и присваиваем значение переменной
 
             middle /= arr.Length; // Делим значение переменной на длину массива и присваиваем полученное значение переменной

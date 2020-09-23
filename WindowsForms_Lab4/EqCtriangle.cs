@@ -67,7 +67,7 @@ namespace WindowsForms_Lab4
             double max = 0; // Создаем переменную и присваиваем ей 0
 
             if (arr.Length > 0) // Проверка на данные в массиве
-                for (int i = 0; i < arr.Length; i++)
+                for (int i = 0; i < (arr.Length < 10 ? arr.Length : 10); i++)
                 {
                     if (arr[i].GetSquare() > max) // Если элемент массива больше максимума, 
                         max = arr[i].GetSquare(); // то его значение присваиваем максимуму
@@ -84,6 +84,9 @@ namespace WindowsForms_Lab4
 
         public EqCtriangle(int N) // Создаем конструктор с 1 параметром(в данном случае это размер массива)
         {
+            if (N > 10)
+                N = 10;
+
             eqct = new EqCtriangle[N]; // Выделяем память под массив
 
             Random r = new Random(); // Создаем объект класса Random
